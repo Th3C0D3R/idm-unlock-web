@@ -20,7 +20,7 @@
         </p>
       </div>
       <div class="hero-meta">
-        <div class="meta-pill">Vercel-ready serverless</div>
+        <div class="meta-pill">Local in our browser</div>
         <div class="meta-pill">No dependencies</div>
         <div class="meta-pill">Wildcard byte pattern patching</div>
       </div>
@@ -54,18 +54,19 @@
         </button>
       </form>
 
+      <a id="download-link" class="download-link hidden" download>Download patched file</a>
+      
       <div id="status" class="status-card hidden">
         <h2>Patch results</h2>
         <div id="status-message" class="status-message"></div>
         <div id="patch-list" class="patch-list"></div>
-        <a id="download-link" class="download-link hidden" download>Download patched file</a>
       </div>
     </section>
 
     <section class="note-box">
       <h3>How it works</h3>
       <p>
-        The app uploads the selected executable to the serverless API, applies
+        The app reads the selected executable in the browser, applies
         the patch patterns, and returns a patched binary as Base64.
       </p>
       <p>
