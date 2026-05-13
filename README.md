@@ -1,51 +1,35 @@
-# IDM Patcher Web Version
+# IDM Unlocker Web
 
-This folder contains a serverless Node.js API route for applying the IDM patcher patterns to a binary file.
+A static browser app for patching IDM binaries locally in the browser.
 
-## Vercel Usage
+Live demo: https://dev.th3.ovh/idm-unlock-web/
 
-Deploy this folder as a Vercel project, or use the `webVersion/` folder as the entry point.
+## How it works
 
-### API Endpoint
+- Open the page in your browser.
+- Upload an IDM executable file (`.exe`).
+- The app applies the same byte-pattern patch rules used by the original IDM patcher.
+- Download the patched executable directly from the browser.
 
-`POST /api/patch`
+## Features
 
-### Request Body
+- Local in-browser patching
+- No server backend required
+- No external dependencies
+- Wildcard byte pattern matching
+- Dry-run preview
+- Optional overwrite output filename
 
-```json
-{
-  "fileName": "IDMan.exe",
-  "fileBase64": "<base64-encoded-binary>",
-  "dryRun": false,
-  "overwrite": false
-}
-```
+## Usage
 
-- `fileName` - optional, used to build the output filename.
-- `fileBase64` - required, the executable file encoded as Base64.
-- `dryRun` - optional boolean. When `true`, the API returns patch counts without modifying the file.
-- `overwrite` - optional boolean. When `true`, the output keeps the original filename instead of appending `.xex`.
-
-### Response
-
-```json
-{
-  "success": true,
-  "dryRun": false,
-  "totalMatches": 5,
-  "patchResults": [
-    { "patch": 1, "count": 1 },
-    { "patch": 2, "count": 0 }
-  ],
-  "outputFileName": "IDMan.xex",
-  "fileBase64": "<patched-file-base64>"
-}
-```
-
-If `dryRun` is enabled, the response includes counts only and omits `fileBase64`.
+1. Upload the IDM binary file.
+2. Enter an output filename or leave it blank.
+3. Enable `Dry run` to preview patch counts without modifying the file.
+4. Enable `Overwrite filename` to keep the original filename instead of appending `.xex`.
+5. Click `Patch file` and download the patched binary.
 
 ## Notes
 
-- The implementation is intentionally minimal and dependency-free for Vercel serverless.
-- It uses exact-byte pattern scanning with wildcard support, matching the original Python patcher behavior.
-- The handler is optimized for fast execution and small memory overhead.
+- This project is designed as a static GitHub Pages / browser-hosted app.
+- All patching is performed locally in the browser.
+- The code is intentionally minimal and dependency-free.
