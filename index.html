@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDM Unlocker Web</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">IDM Unlocker</p>
+          <h1>Patch IDM binaries in the browser.</h1>
+          <p class="hero-text">
+            Upload a file, run the same patch patterns from the original Python
+            tool, and download the patched executable.
+          </p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-pill">Vercel-ready serverless</div>
+          <div class="meta-pill">No dependencies</div>
+          <div class="meta-pill">Wildcard byte pattern patching</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <form id="patch-form" class="form-grid">
+          <label class="field-group">
+            <span>Executable file</span>
+            <input id="file-input" type="file" accept=".exe" />
+          </label>
+
+          <label class="field-group">
+            <span>Output filename</span>
+            <input id="filename-input" type="text" placeholder="IDMan.exe" />
+          </label>
+
+          <div class="field-row">
+            <label class="checkbox-field">
+              <input id="dry-run" type="checkbox" />
+              <span>Dry run</span>
+            </label>
+            <label class="checkbox-field">
+              <input id="overwrite" type="checkbox" />
+              <span>Overwrite filename</span>
+            </label>
+          </div>
+
+          <button id="patch-button" type="submit" class="btn-primary">
+            Patch file
+          </button>
+        </form>
+
+        <div id="status" class="status-card hidden">
+          <h2>Patch results</h2>
+          <div id="status-message" class="status-message"></div>
+          <div id="patch-list" class="patch-list"></div>
+          <a id="download-link" class="download-link hidden" download
+            >Download patched file</a
+          >
+        </div>
+      </section>
+
+      <section class="note-box">
+        <h3>How it works</h3>
+        <p>
+          The app uploads the selected executable to the serverless API, applies
+          the patch patterns, and returns a patched binary as Base64.
+        </p>
+        <p>
+          Use <strong>dry run</strong> to preview how many matches would be
+          modified without changing the file.
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
