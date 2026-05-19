@@ -82,6 +82,14 @@ h1 {
   font-size: 0.94rem;
 }
 
+.green-pill{
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: rgba(87, 227, 36, 0.12);
+  color: #83cff6;
+  font-size: 0.94rem;
+}
+
 .panel {
   padding: 32px;
   margin-bottom: 24px;
